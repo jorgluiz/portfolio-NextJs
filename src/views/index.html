@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/views/index.css">
+    <title>Home</title>
+    <style>
+        #top {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: #000;
+            color: #fff;
+            padding: 10px;
+            text-decoration: none;
+        }
+
+        body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      padding: 20px;
+    }
+    .code-container {
+      background-color: #282c34;
+      color: #abb2bf;
+      padding: 20px;
+      border-radius: 5px;
+      overflow: auto;
+      white-space: pre;
+    }
+    .code-container span.keyword {
+      color: #c678dd;
+    }
+    .code-container span.function {
+      color: #61afef;
+    }
+    .code-container span.string {
+      color: #98c379;
+    }
+    .code-container span.comment {
+      color: #5c6370;
+    }
+    </style>
+</head>
+
+<body>
+    <div style="width: 100%; border: 1px solid #000000;">
+        <h1 style="display: flex; justify-content: center; margin-top: 50px;">Projeto FrontEnd</h1>
+    </div>
+    <div style="display: flex; flex-direction: column; width: 60%; margin-left: 10px;">
+        <h1 style="text-decoration: underline;">Como iniciar um projeto com NextJS</h1>
+        <a id="inicio"></a>
+        <a href="#fim">Ir para o fim da página</a>
+        <p style="font-size: 20px;">Starting project:</p><br>
+        <p>1. npx create - next - app@latest. --typescript</p><br>
+        <div style="width: auto; height: auto; background-color: #000000; color: aliceblue; font-size: 20px;">
+            <pre>
+                ESLint: Yes
+                Tailwind CSS: No
+                src / directory: Yes
+                App Router: Yes
+                Customize default import alias: Yes
+            </pre>
+        </div><br>
+        <p>2. Estrutura do Projeto</p>
+        <div style="width: auto; height: auto; background-color: #000000; color: aliceblue; font-size: 20px;">
+            <pre>
+                my-ecommerce-project/
+                ├── public/
+                │   ├── images/
+                │   │   └── logo.png
+                │   └── favicons/
+                │       └── favicon.ico
+                ├── src/
+                │   ├── api/
+                │   │   ├── products/
+                │   │   │   ├── index.js
+                │   │   │   └── [id].js
+                │   │   ├── users/
+                │   │   │   ├── index.js
+                │   │   │   └── [id].js
+                │   │   └── orders/
+                │   │       ├── index.js
+                │   │       └── [id].js
+                │   ├── assets/
+                │   │   ├── fonts/
+                │   │   ├── images/
+                │   │   └── videos/
+                │   ├── components/
+                │   │   ├── Header.js
+                │   │   ├── Footer.js
+                │   │   ├── ProductCard.js
+                │   │   └── ...
+                │   ├── pages/
+                │   │   ├── _app.js
+                │   │   ├── _document.js
+                │   │   ├── index.js
+                │   │   ├── product/
+                │   │   │   ├── [id].js
+                │   │   │   └── index.js
+                │   │   └── ...
+                │   ├── styles/
+                │   │   ├── globals.css
+                │   │   ├── Home.module.css
+                │   │   └── ...
+                │   └── utils/
+                │       ├── api.js
+                │       ├── constants.js
+                │       └── ...
+                ├── .env.local
+                ├── .gitignore
+                ├── jsconfig.json
+                ├── next.config.js
+                ├── package.json
+                └── README.md
+            </pre>
+        </div><br>
+        <h1 style="margin-bottom: 5px;">Descrição das Pastas e Arquivos</h1>
+        <ul>
+            <li><strong>src/api/: </strong>Contém a lógica dos endpoints da API.</li>
+            <li style="margin-left: 10px; margin-bottom: 2px;"><strong>products/:</strong> Endpoints relacionados aos
+                produtos.</li>
+            <li style="margin-left: 20px; margin-bottom: 2px;"><strong>index.js:</strong> Lista todos os produtos ou
+                cria um novo produto.</li>
+            <li style="margin-left: 20px; margin-bottom: 5px;"><strong>[id].js:</strong> Manipula operações específicas
+                para um produto (obter, atualizar, deletar).</li>
+            <li><strong>users/:</strong>Endpoints relacionados aos usuários.</li>
+            <li style="margin-left: 10px; margin-bottom: 2px;"><strong>index.js:</strong>Lista todos os usuários ou cria
+                um novo usuário.</li>
+            <li style="margin-left: 20px; margin-bottom: 5px;"><strong>[id].js: </strong>Manipula operações específicas
+                para um usuário (obter, atualizar, deletar).</li>
+            <li><strong>orders/:</strong>Endpoints relacionados aos pedidos.</li>
+            <li style="margin-left: 10px; margin-bottom: 2px;"><strong>index.js:</strong>Lista todos os pedidos ou cria
+                um novo pedido.</li>
+            <li style="margin-left: 20px;"><strong>[id].js:</strong>Manipula operações específicas para um pedido
+                (obter, atualizar, deletar).</li>
+        </ul><br>
+        <h4>Essa estrutura deve ajudar a manter seu projeto organizado e modular, facilitando a <span
+                style="text-decoration: underline; font-size: 20px;">manutenção</span> e a <span
+                style="text-decoration: underline; font-size: 20px;">escalabilidade</span>.</h4>
+
+        <p>3. Configurações Adicionais</p><br>
+        <strong>tsconfig.json:</strong>
+        <strong>A configuração de alias de importação pode ser personalizada aqui.Supondo que você queira usar @/ como
+            alias para o diretório src:</strong><br>
+        <div style="width: auto; height: auto; background-color: #000000; color: aliceblue; font-size: 20px;">
+            <pre>
+                {
+                    "compilerOptions": {
+                        "target": "esnext",
+                        "lib": [
+                            "dom",
+                            "dom.iterable",
+                            "esnext"
+                        ],
+                        "allowJs": true,
+                        "skipLibCheck": true,
+                        "strict": true,
+                        "forceConsistentCasingInFileNames": true,
+                        "noEmit": true,
+                        "esModuleInterop": true,
+                        "module": "esnext",
+                        "moduleResolution": "node",
+                        "resolveJsonModule": true,
+                        "isolatedModules": true,
+                        "jsx": "preserve",
+                        "incremental": true,
+                        "baseUrl": ".",
+                        "paths": {
+                            "@/*": [
+                                "src/*"
+                            ]
+                        },
+                        "plugins": [
+                            {
+                                "name": "next"
+                            }
+                        ]
+                    },
+                    "include": [
+                        "next-env.d.ts",
+                        "**/*.ts",
+                        "**/*.tsx",
+                        ".next/types/**/*.ts",
+                        "babel.config.js"
+                    ],
+                    "exclude": [
+                        "node_modules"
+                    ]
+                }
+            </pre>
+        </div><br>
+        <p>4. Configurando ESLint</p>
+        <div style="width: auto; height: auto; background-color: #000000; color: aliceblue; font-size: 20px;">
+            <pre>
+                {
+                    "root": true,
+                      "env": {
+                      "es2022": true,
+                        "node": true,
+                          "browser": true
+                    },
+                    "extends": [
+                      "next/core-web-vitals",
+                      "plugin:@typescript-eslint/recommended",
+                      "plugin:react/recommended",
+                      "standard-with-typescript"
+                    ],
+                      "parser": "@typescript-eslint/parser",
+                        "parserOptions": {
+                      "ecmaVersion": 2022,
+                        "sourceType": "module",
+                          "ecmaFeatures": {
+                        "jsx": true
+                      },
+                      "project": "./tsconfig.json"
+                    },
+                    "plugins": [
+                      "@typescript-eslint",
+                      "import",
+                      "promise",
+                      "react"
+                    ],
+                      "settings": {
+                      "react": {
+                        "version": "detect"
+                      }
+                    },
+                    "rules": {
+                      // Adicione suas regras personalizadas aqui
+                    },
+                    "ignorePatterns": [
+                      "babel.config.js"
+                    ]
+                  }
+                  
+            </pre>
+        </div><br>
+        <p>5. babel.config.js</p>
+        <div style="width: auto; height: auto; background-color: #000000; color: aliceblue; font-size: 20px;">
+            <pre>
+                module.exports = {
+                    presets: ["next/babel"],
+                    plugins: [
+                      ["styled-components", { "ssr": true }],
+                      "inline-react-svg"
+                    ]
+                  }
+                  
+            </pre>
+        </div><br>
+        <p> 6. Rodar o servidor de desenvolvimento: yarn dev</p><br>
+
+
+        <strong>Conclusão:</strong>
+        <strong>Você agora tem um projeto Next.js configurado com TypeScript, ESLint, o diretório src /, e o App
+            Router.Essa estrutura proporciona uma base sólida para o desenvolvimento de uma aplicação moderna, escalável
+            e de fácil manutenção.</strong><br><br>
+
+        <h1 style="text-decoration: underline;">Como indexar site passo a passo </h1>
+        <h2>Para garantir que seu site seja bem indexado pelo <span style="color: blue;">G</span><span
+                style="color: red;">o</span><span style="color: yellow;">o</span><span
+                style="color: blue;">g</span><span style="color: green;">l</span><span style="color: red;">e</span> e
+            outros motores de busca, você pode usar SSR (Server-Side Rendering) de forma seletiva, dependendo das
+            necessidades específicas de cada página. Vamos detalhar as opções:</h2><br>
+        <h2 style="margin: 0 0 20px 20px;">Entendendo um pouco sobre motores de busca</h2>
+        <h1 style="margin-bottom: 10px;">1. SSR em Todas as Páginas</h1>
+        <p class="margin-bottom"><strong>Vantagem:</strong> Todas as páginas são renderizadas no servidor, garantindo
+            que o conteúdo esteja disponível para os rastreadores de mecanismos de busca imediatamente.</p>
+        <p class="margin-bottom"><strong>Desvantagem:</strong> Pode aumentar a carga do servidor e, dependendo da
+            complexidade da página, pode aumentar o tempo de carregamento inicial.</p>
+        <h1>2 .SSR em Páginas Específicas</h1>
+        <p class="margin-bottom"><strong>Vantagem:</strong> Você pode escolher quais páginas precisam de SSR com base na
+            necessidade de indexação e SEO. Isso ajuda a equilibrar a carga do servidor e a velocidade de carregamento.
+        </p>
+        <p class="margin-bottom"><strong>Desvantagem:</strong> Requer planejamento cuidadoso para garantir que as
+            páginas mais importantes para SEO sejam servidas corretamente.</p>
+        <h1>3. SSR Apenas no Layout</h1>
+        <p class="margin-bottom"><strong>Vantagem:</strong> Pode ajudar na criação de uma estrutura básica da página que
+            é rapidamente renderizada, com o conteúdo dinâmico carregado posteriormente no cliente.</p>
+        <p class="margin-bottom"><strong>Desvantagem:</strong> O conteúdo principal pode não estar disponível
+            imediatamente para os rastreadores de mecanismos de busca, o que pode afetar negativamente o SEO.</p>
+
+        <p style="color: red;"><strong>Recomendação</strong></p>
+        <p>Para um projeto de e-commerce, é geralmente recomendável usar SSR para as páginas principais que você deseja
+            que sejam indexadas e bem ranqueadas nos motores de busca, como a <strong>página inicial</strong>,<strong>
+                páginas de produtos</strong>, <strong>categorias</strong> e quaisquer outras páginas de conteúdo
+            relevante<strong>. <br></strong> <strong>Outras páginas, como páginas de conta de usuário ou carrinho de
+                compras, podem usar CSR (Client-Side Rendering).</strong></p>
+        <h2>Conclusão</h2>
+        <p style="background-color: bisque; border: 1px solid #000;">Você não precisa usar SSR em todas as páginas, mas
+            sim nas páginas que são mais importantes para indexação nos motores de busca. Para outras páginas, você pode
+            usar CSR. Esta abordagem equilibrada garante que seu site seja bem indexado enquanto mantém a performance e
+            a carga do servidor gerenciáveis.</p>
+
+        <h2
+            style="background-color: #000; width: 350px; height: 50px; text-align: center; display: flex; justify-content: space-around; align-items: center; border-radius: 50px;">
+            <strong style="color: blueviolet;">import</strong> <strong style="color: deepskyblue;">Head</strong> <strong
+                style="color: blueviolet;">from</strong> <strong style="color: sienna;">'next/head'</strong>
+        </h2>
+        <p>
+            O <strong>Head</strong> do <strong>next/head</strong> é um componente do Next.js que permite que você
+            modifique o conteúdo da tag <strong>head</strong> de um documento HTML em uma página específica. Isso é útil
+            para várias finalidades, incluindo SEO (Search Engine Optimization), definição de títulos de página
+            dinâmicos, meta tags, links para estilos e scripts, e muito mais.</p>
+        <p>Aqui estão algumas das principais funcionalidades e exemplos de uso do componente Head:</p>
+        <h2>Principais Funcionalidades</h2>
+        <p>1<strong> Definir Títulos de Página Dinâmicos:</strong> Permite definir o título da página de forma dinâmica
+            com base no conteúdo da página, o que é importante para SEO.</p>
+        <p>2 <strong>Meta Tags para SEO:</strong> Adicionar meta tags para descrever o conteúdo da página,
+            palavras-chave e outros metadados importantes para SEO.</p>
+        <p>3 <strong>Links para CSS e Scripts:</strong> Incluir links para folhas de estilo externas ou scripts
+            necessários apenas para aquela página específica.</p>
+        <p>4 <strong>Meta Tags para Redes Sociais:</strong> Adicionar meta tags específicas para a pré-visualização de
+            links compartilhados em redes sociais, como Open Graph e Twitter Card.</p>
+        <h1>Exemplos de Uso</h1>
+        <span><strong style="border: #000 solid 1px;">Definir Título e Meta Tags de Descrição</strong></span>
+        <pre class="definir-titulo-e-meta-tags"></pre>
+
+        <span><strong style="border: #000 solid 1px;">Adicionar Open Graph Tags para Redes Sociais</strong></span>
+        <pre class="adicionar-opengraph-tags-para-redes-sociais"></pre>
+
+        <span><strong style="border: #000 solid 1px;">Incluir Links para CSS Externos</strong></span>
+        <pre class="incluir-links-para-CSS-externos"></pre><br>
+        <h1><strong style="text-decoration: underline;">Benefícios</strong> para SEO e <strong style="text-decoration: underline;">Performance</strong></h1>
+
+        <p>1 <strong>Melhor SEO:</strong> Definindo títulos de página, descrições e outras meta tags, você ajuda os motores de busca a entender o conteúdo e a relevância da sua página, melhorando o ranking nos resultados de busca.</p>
+        <p>2 <strong>Melhor Usabilidade:</strong> Títulos e descrições precisas e informativas ajudam os usuários a entender o conteúdo da página antes mesmo de clicar no link nos resultados de busca.</p>
+        <p>3 <strong>Melhor Compartilhamento em Redes Sociais:</strong> Usando Open Graph e outras meta tags, você garante que a pré-visualização dos links compartilhados nas redes sociais seja atraente e informativa.</p>
+        <p>4 <strong>Carregamento Condicional de Recursos:</strong> Incluindo folhas de estilo e scripts específicos apenas nas páginas que precisam deles, você pode melhorar a performance do seu site, evitando carregar recursos desnecessários.</p>
+        <p>O componente <strong>Head</strong> é uma ferramenta poderosa no Next.js para controlar e otimizar o conteúdo da tag <strong>head</strong> de suas páginas, proporcionando benefícios significativos tanto para SEO quanto para a experiência do usuário.</p>
+
+        <h2>Conclusão</h2>
+        <p>Sim, você precisa incluir o nome do produto no <strong>title</strong> dentro do componente <strong>Head</strong> para que ele apareça nas pesquisas do Google. Isso ajuda a melhorar a visibilidade da sua página nos resultados de busca, tornando-a mais relevante para a palavra-chave pesquisada.</p>
+        
+        <h1>Exemplo de Código Next.js</h1>
+        <h2>Este exemplo mostra como criar uma página de produto em Next.js que é otimizada para SEO e experiência do usuário.</h2>
+        <div class="code-container">
+          <span class="keyword">import</span> Head <span class="keyword">from</span> <span class="string">'next/head'</span>;
+          <br>
+          <span class="keyword">import</span> <span class="function">{</span> useRouter <span class="function">}</span> <span class="keyword">from</span> <span class="string">'next/router'</span>;
+          <br><br>
+          <span class="comment">// Função simulada para obter detalhes do produto</span><br>
+          <span class="keyword">async</span> <span class="keyword">function</span> fetchProduct(id) <span class="function">{</span>
+          <br>
+          &nbsp;&nbsp;<span class="comment">// Simulando uma chamada à API para buscar os detalhes do produto</span>
+          <br>
+          &nbsp;&nbsp;<span class="keyword">return</span> <span class="function">{</span>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;id,
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;name: <span class="string">'Processador AMD Ryzen 5 5600X'</span>,
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;description: <span class="string">'Um processador de alta performance para jogos e produtividade.'</span>,
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;price: 299,
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;image: <span class="string">'/images/amd-ryzen-5-5600x.jpg'</span>,
+          <br>
+          &nbsp;&nbsp;<span class="function">}</span>;
+          <br>
+          <span class="function">}</span>
+          <br><br>
+          <span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> ProductPage(<span class="function">{</span> product <span class="function">}</span>) <span class="function">{</span>
+          <br>
+          &nbsp;&nbsp;<span class="keyword">return</span> (
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<span class="function"><</span>div<span class="function">></span>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="function"><</span>Head<span class="function">></span>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="function"><</span>title<span class="function">>{</span>product.name<span class="function">}</span> - Amazon<span class="function"><</span><span class="function">/title></span>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="function"><</span>meta name=<span class="string">"description"</span> content=<span class="string">{product.description}</span> <span class="function">/></span>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="function"><</span>meta property=<span class="string">"og:title"</span> content=<span class="string">{product.name}</span> <span class="function">/></span>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="function"><</span>meta property=<span class="string">"og:description"</span> content=<span class="string">{product.description}</span> <span class="function">/></span>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="function"><</span>meta property=<span class="string">"og:image"</span> content=<span class="string">{product.image}</span> <span class="function">/></span>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="function"><</span>meta property=<span class="string">"og:url"</span> content=<span class="string">{`https://amazon.com/product/${product.id}`}</span> <span class="function">/></span>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="function"><</span>meta property=<span class="string">"og:type"</span> content=<span class="string">"product"</span> <span class="function">/></span>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="function"><</span><span class="function">/Head></span>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="function"><</span>header<span class="function">></span>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="function"><</span>h1<span class="function">>{</span>product.name<span class="function">}</span><span class="function"><</span><span class="function">/h1></span>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="function"><</span><span class="function">/header></span>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="function"><</span>main<span class="function">></span>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="function"><</span>img src=<span class="string">{product.image}</span> alt=<span class="string">{product.name}</span> <span class="function">/></span>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="function"><</span>p<span class="function">>{</span>product.description<span class="function">}</span><span class="function"><</span><span class="function">/p></span>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="function"><</span>p<span class="function">>Price: ${</span>product.price<span class="function">}</span><span class="function"><</span><span class="function">/p></span>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="function"><</span>button<span class="function">>Add to Cart<span class="function"><</span><span class="function">/button></span>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="function"><</span><span class="function">/main></span>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="function"><</span>footer<span class="function">></span>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">{/* Footer content */}</span>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="function"><</span><span class="function">/footer></span>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<span class="function"><</span><span class="function">/div></span>
+          <br>
+          &nbsp;&nbsp;)
+          <br>
+          <span class="function">}</span>
+          <br><br>
+          <span class="comment">// getServerSideProps para renderização no servidor</span><br>
+          <span class="keyword">export</span> <span class="keyword">async function</span> getServerSideProps(context) <span class="function">{</span>
+          <br>
+          &nbsp;&nbsp;<span class="keyword">const</span> <span class="function">{</span> id <span class="function">}</span> = context.params;
+          <br>
+          &nbsp;&nbsp;<span class="keyword">const</span> product = <span class="keyword">await</span> fetchProduct(id);
+          <br><br>
+          &nbsp;&nbsp;<span class="keyword">return</span> <span class="function">{</span>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;props: <span class="function">{</span> product <span class="function">}</span>,
+          <br>
+          &nbsp;&nbsp;<span class="function">}</span>;
+          <br>
+          <span class="function">}</span>
+        </div>
+        <a id="fim"></a>
+        <a href="#inicio">Ir para o início da página</a>
+
+        <a id="top" href="#inicio">Topo</a>
+    </div>
+    <!-- <a style="visibility: hidden;" href="/catalogo">Ir para o catálogo</a> -->
+
+</body>
+<script>
+    const pre = document.querySelector('.definir-titulo-e-meta-tags')
+    pre.innerText = `
+import Head from 'next/head';
+
+export default function HomePage() {
+  return (
+    <div>
+      <Head>
+        <title>Home - My E-commerce Site</title>
+        <meta name="description" content="Welcome to My E-commerce Site. Find the best products here." />
+      </Head>
+      <h1>Welcome to My E-commerce Site</h1>
+      {/* Conteúdo da página */}
+    </div>
+  );
+}
+`
+    pre.style.fontSize = '20px'
+
+    const pree = document.querySelector('.adicionar-opengraph-tags-para-redes-sociais')
+    pree.innerText = `
+import Head from 'next/head';
+
+export default function ProductPage({ product }) {
+  return (
+    <div>
+      <Head>
+        <title>{product.name} - My E-commerce Site</title>
+        <meta name="description" content={product.description} />
+        <meta property="og:title" content={product.name} />
+        <meta property="og:description" content={product.description} />
+        <meta property="og:image" content={product.image} />
+        <meta property="og:url" content={https://myecommercesite.com/product/ $ {product.id}} />
+    <meta property="og:type" content="product" />
+      </Head >
+      <h1>{product.name}</h1>
+      <p>{product.description}</p>
+      <p>Price: $ {product.price}</p>
+      <img src={product.image} alt={product.name} />
+    {/* Conteúdo da página */ }
+    </div >
+  );
+}
+`
+pree.style.fontSize = '20px'
+
+const preee = document.querySelector('.incluir-links-para-CSS-externos')
+    preee.innerText = `
+import Head from 'next/head';
+
+export default function CustomPage() {
+  return (
+    <div>
+      <Head>
+        <title>Custom Page - My E-commerce Site</title>
+        <link rel="stylesheet" href="https://example.com/custom-styles.css" />
+      </Head>
+      <h1>Custom Page Content</h1>
+      {/* Conteúdo da página */}
+    </div>
+  );
+}
+`
+preee.style.fontSize = '20px'
+</script>
+</html>
